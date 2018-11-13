@@ -42,6 +42,8 @@ group :test do
   gem 'shoulda-matchers'
   # Use this gem to easily fake data for Factories
   gem 'faker'
+  # Gem that will clean testing
+  gem 'database_cleaner'
 end
 
 group :development do
