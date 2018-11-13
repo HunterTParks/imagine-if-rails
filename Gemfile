@@ -33,6 +33,17 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
+group :test do
+  # Use Rspec-rails for proper TDD
+  gem 'rspec-rails'
+  # Use FactoryBot to create factories
+  gem 'factory_bot_rails'
+  # Use Shoulda for easier testing syntax
+  gem 'shoulda-matchers'
+  # Use this gem to easily fake data for Factories
+  gem 'faker'
+end
+
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
