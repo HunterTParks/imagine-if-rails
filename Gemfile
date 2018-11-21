@@ -43,6 +43,8 @@ group :test do
   gem 'factory_bot_rails'
   # Use Shoulda for easier testing syntax
   gem 'shoulda-matchers'
+  # Dependency for using 'shoulda-matchers' on rails 5.x
+  gem 'rails-controller-testing'
   # Use this gem to easily fake data for Factories
   gem 'faker'
   # Gem that will clean testing

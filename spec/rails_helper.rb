@@ -9,14 +9,6 @@ require 'rspec/rails'
 
 require 'database_cleaner'
 
-# Configure Shoulda Matchers to use rspec as the testing framework
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :Rspec
-    with.library :rails
-  end
-end
-
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -73,9 +65,22 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   # Truncate all tables but use the faster transaction strategy
-  config.before(:suite) do |obj|
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |obj|
     DatabaseCleaner.cleaning do
       obj.run
+    end
+  end
+
+  # Configure Shoulda Matchers to use rspec as the testing framework
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
     end
   end
 end
