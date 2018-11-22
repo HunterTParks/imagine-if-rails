@@ -17,8 +17,14 @@ RSpec.describe User, :type => :model do
     it "should create a user successfully" do
       expect(create(:user)).to be_valid
     end
-    it "should not be valid without a username"
-    it "should not be valid without an email"
-    it "should not be valid without a password"
+    it "should not be valid without a username" do
+      expect(User.new(username: nil, email: "test@test.com", password: "qwerty123")).to_not be_valid
+    end
+    it "should not be valid without an email" do
+      expect(User.new(username: "test", email: nil, password: "qwerty123")).to_not be_valid
+    end
+    it "should not be valid without a password" do
+      expect(User.new(username: "test", email: "test@test.com", password: nil)).to_not be_valid
+    end
   end
 end
