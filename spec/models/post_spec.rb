@@ -11,8 +11,13 @@ RSpec.describe :Post, :type => :model do
   end
 
   context "When a post is created, it" do
+    before(:each) do
+      create(:user)
+    end
+
     it "should create a post successfully" do
-      expect(create(:post).to be_valid)
+      user = User.first
+      expect(Post.new(user_id: user.id, title: "test", body: "testing")).to be_valid
     end
     it "should not be valid without a user" do
       expect(Post.new(user_id: nil, title: "test", body: "testing")).to_not be_valid
