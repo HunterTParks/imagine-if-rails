@@ -2,8 +2,8 @@ require 'faker'
 
 FactoryBot.define do
   factory :post do
-    author
-    title { Faker::SwordArtOnline.character }
+    user_id { rand(100) }
+    title { Faker::SwordArtOnline.game_name }
     body { Faker::Lorem.word }
   end
 end
