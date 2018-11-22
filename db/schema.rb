@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_223044) do
+ActiveRecord::Schema.define(version: 2018_11_22_005816) do
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.string "body"
+    t.datetime "created_at", null: false
+    t.datetime "modified_at"
+    t.datetime "updated_at", null: false
+  end
 
 # Could not dump table "users" because of following StandardError
 #   Unknown type '' for column 'enabled'
