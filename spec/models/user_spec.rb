@@ -17,5 +17,8 @@ RSpec.describe User, :type => :model do
     it "should create a user successfully" do
       expect(create(:user)).to be_valid
     end
+    it "should not be valid without a username"
+    it "should not be valid without an email"
+    it "should not be valid without a password"
   end
 end
