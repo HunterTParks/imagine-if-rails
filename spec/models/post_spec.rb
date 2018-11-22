@@ -11,9 +11,17 @@ RSpec.describe :Post, :type => :model do
   end
 
   context "When a post is created, it" do
-    it "should create a post successfully"
-    it "should not be valid without a user"
-    it "should not be valid without a title"
-    it "should not be valid without a body"
+    it "should create a post successfully" do
+      expect(create(:post).to be_valid)
+    end
+    it "should not be valid without a user" do
+      expect(Post.new(user_id: nil, title: "test", body: "testing")).to_not be_valid
+    end
+    it "should not be valid without a title" do
+      expect(Post.new(user_id: 1, title: nil, body: "testing")).to_not be_valid
+    end
+    it "should not be valid without a body" do
+      expect(Post.new(user_id: 1, title: "test", body: nil)).to_not be_valid
+    end
   end
 end
