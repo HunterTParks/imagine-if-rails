@@ -65,16 +65,16 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   # Truncate all tables but use the faster transaction strategy
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
+  #config.before(:suite) do
+    #DatabaseCleaner.strategy = :transaction
+    #DatabaseCleaner.clean_with(:truncation)
+  #end
 
-  config.around(:each) do |obj|
-    DatabaseCleaner.cleaning do
-      obj.run
-    end
-  end
+  #config.around(:each) do |obj|
+    #DatabaseCleaner.cleaning do
+      #obj.run
+    #end
+  #end
 
   # Configure Shoulda Matchers to use rspec as the testing framework
   Shoulda::Matchers.configure do |config|
