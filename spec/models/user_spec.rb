@@ -2,8 +2,12 @@ require "rails_helper"
 
 RSpec.describe User, :type => :model do
   context "In General, it" do
-    it { expect(User.reflect_on_association(:message).macro).to eq(:has_many) }
-    it { expect(User.reflect_on_association(:comment).macro).to eq(:has_many) }
+    it "should have many messages" do
+      expect(Admin.reflect_on_association(:message).macro).to eq(:has_many)
+    end
+    it "should have many comments" do
+      expect(User.reflect_on_association(:comment).macro).to eq(:has_many)
+    end
     it "should have posts" do
       user = User.reflect_on_association(:posts)
       expect(user.macro).to eq(:has_many)
