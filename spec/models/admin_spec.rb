@@ -6,10 +6,10 @@ RSpec.describe Admin, :type => :model do
       expect(Admin.reflect_on_association(:message).macro).to eq(:has_many)
     end
     it "should have many comments" do
-      expect(User.reflect_on_association(:comment).macro).to eq(:has_many)
+      expect(Admin.reflect_on_association(:comment).macro).to eq(:has_many)
     end
     it "should have posts" do
-      user = User.reflect_on_association(:posts)
+      user = Admin.reflect_on_association(:posts)
       expect(user.macro).to eq(:has_many)
     end
   end
