@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :user, aliases: [:author, :commenter, :sender] do
     email { Faker::Internet.email }
     username { Faker::Lorem.word }
-    password  { Faker::ParksAndRec.character }
+    password  { Faker::Lorem.characters(10) }
   end
 end
