@@ -16,6 +16,9 @@ RSpec.describe :Post, :type => :model do
     end
 
     it "should create a post successfully" do
+      user = User.first
+      post = create(:post, user: user)
+      expect(post).to be_valid
     end
     it "should not be valid without a user" do
     end
