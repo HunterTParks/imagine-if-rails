@@ -11,9 +11,22 @@ RSpec.describe Post, :type => :model do
   end
 
   context "When creating a comment, it" do
-    it "should create a comment successfully"
-    it "should not be valid without a first user"
-    it "should not be valid without a second user"
-    it "should not be valid without a body"
+    before(:each) do
+      create(:user)
+      create(:post, user: user)
+    end
+
+    it "should create a comment successfully" do
+      comment = create(:comment, user: user, post: post)
+      expect(comment).to_not be_valid
+    end
+    it "should not be valid without a message" do
+      comment = build(:comment, user: user, post: post, message: nil)
+      expect(comment).to_not be_valid
+    end
+    it "should not be valid without a user" do
+      comment = build(:comment, user: nil, post: post)
+      expect(comment).to_not be_valid
+    end
   end
 end
