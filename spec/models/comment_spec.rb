@@ -21,7 +21,7 @@ RSpec.describe Post, :type => :model do
       user = User.first
       post = Post.first
       comment = create(:comment, user: user, post: post)
-      expect(comment).to_not be_valid
+      expect(comment).to be_valid
     end
     it "should not be valid without a message" do
       user = User.first
