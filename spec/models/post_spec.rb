@@ -21,10 +21,18 @@ RSpec.describe :Post, :type => :model do
       expect(post).to be_valid
     end
     it "should not be valid without a user" do
+      post = build(:post, user: nil)
+      expect(post).to_not be_valid
     end
     it "should not be valid without a title" do
+      user = User.first
+      post = build(:post, user: user, title: nil)
+      expect(post).to_not be_valid
     end
     it "should not be valid without a body" do
+      user = User.first
+      post = build(:post, user: user, body: nil)
+      expect(post).to_not be_valid
     end
   end
 end
