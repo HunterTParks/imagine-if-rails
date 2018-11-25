@@ -28,6 +28,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# Use Mailboxer to handle all user messaging interactions
+gem 'mailboxer'
+
 # Use Devise for user authentication
 gem 'devise'
 
