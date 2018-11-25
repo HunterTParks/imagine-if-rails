@@ -13,18 +13,25 @@ RSpec.describe Post, :type => :model do
   context "When creating a comment, it" do
     before(:each) do
       create(:user)
+      user = User.first
       create(:post, user: user)
     end
 
     it "should create a comment successfully" do
+      user = User.first
+      post = Post.first
       comment = create(:comment, user: user, post: post)
       expect(comment).to_not be_valid
     end
     it "should not be valid without a message" do
+      user = User.first
+      post = Post.first
       comment = build(:comment, user: user, post: post, message: nil)
       expect(comment).to_not be_valid
     end
     it "should not be valid without a user" do
+      user = User.first
+      post = Post.first
       comment = build(:comment, user: nil, post: post)
       expect(comment).to_not be_valid
     end
