@@ -8,4 +8,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   acts_as_messageable
+
+  # These methods are required by the Mailboxer gem.
+  #
+  # 'name simply returns the username
+  def name
+    return self.username
+  end
+
+  # This method returns the user's email
+  def mailboxer_email(object)
+    return self.email
+  end
 end
